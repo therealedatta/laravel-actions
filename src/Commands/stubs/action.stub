@@ -1,0 +1,62 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Http\Request;
+use Illuminate\Routing\Router;
+use Therealedatta\LaravelActions\Action;
+
+class {{ class }} extends Action
+{
+    /**
+     * optional, only if you want to register routes within the action:
+     * `Actions::registerRoutes({{ namespace }}\{{ class }});`
+     */
+    public static function routes(Router $router): void
+    {
+        $router->post('/my/action/{user}/endopoint', static::class);
+    }
+
+    /**
+     * optional, default `true` if method is missing (configurable in config/actions.php)
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * optional, default `[]` if method is missing
+     */
+    public function rules(): array
+    {
+        return [];
+    }
+
+    /**
+     * the real action execution, when called as object this is the return
+     * it has the route parameters already injected by `__invoke`
+     * authorization is executed always, but validate is manual
+     */
+    public function handle(): User
+    {
+        $validated_data = $this->validate();
+
+        return tap($this->user)->update($validated_data);
+    }
+
+    /**
+     * Used to inject route parameters, available directly here and in handle
+     * within the `$this` context (example: `$this->user`)
+     */
+    public function __invoke(Request $request, User $user): \Illuminate\View\View
+    {
+        $updated_user = $this->handle();
+
+        session()->flash('status', 'Task was successful!');
+
+        return view('my-view', ['user' => $updated_user]);
+
+        // return redirect()...
+    }
+}

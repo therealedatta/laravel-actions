@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "therealedatta/laravel-actions",
+    "description": "Actions: controller + auth + validation in one class",
     "keywords": [
-        ":vendor_name",
+        "therealedatta",
         "laravel",
-        ":package_slug"
+        "laravel-actions"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/therealedatta/laravel-actions",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "edatta",
+            "email": "edatta@edatta.com",
             "role": "Developer"
         }
     ],
@@ -30,25 +30,28 @@
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
-        "phpunit/phpunit": "^9.5",
-        "spatie/laravel-ray": "^1.26"
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Therealedatta\\LaravelActions\\": "src",
+            "Therealedatta\\LaravelActions\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Therealedatta\\LaravelActions\\Tests\\": "tests"
         }
     },
     "scripts": {
-        "analyse": "vendor/bin/phpstan analyse",
-        "test": "vendor/bin/pest",
+        "format": "vendor/bin/pint --ansi",
+        "analyse": "vendor/bin/phpstan analyse --ansi --memory-limit 2G",
         "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint"
+        "test": [
+            "@format",
+            "@analyse",
+            "@test-coverage"
+        ]
     },
     "config": {
         "sort-packages": true,
@@ -60,10 +63,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Therealedatta\\LaravelActions\\ActionServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "Action": "Therealedatta\\LaravelActions\\Facades\\Action"
             }
         }
     },

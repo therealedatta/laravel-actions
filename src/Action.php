@@ -83,17 +83,17 @@ abstract class Action extends FormRequest
 
     /**
      * Warning: automatic validation has been disabled when calling the action or object
-     * 1. invalidate the cache of the latest resolved validator (`unset($this->validator)`)
-     * 2. resolve again the validator (`parent::getValidatorInstance()`)
-     * 3. call validate from validator (`$this->validator->validate()`)
-     * 4. return $this->validated();
+     * 1. invalidate the cache of the latest resolved validator (`unset($this->validator)`) son we can call it more than in one request
+     * 2. resolve again the validator and resolve it as if it is the first dependency injection resolution (`parent::validateResolved()`)
+     * 3. return $this->validator->validated(); (already passed validation in validateResolved)
      */
     public function validate(): array
     {
         unset($this->validator);
-        parent::getValidatorInstance();
 
-        return $this->validator->validate();
+        parent::validateResolved();
+
+        return $this->validator->validated();
     }
 
     /**

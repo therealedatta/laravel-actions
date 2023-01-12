@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-actions` will be documented in this file.
 
+## v1.2 - 2023-01-12
+
+### What's Changed
+
+- Bump ramsey/composer-install from 1 to 2 by @dependabot in https://github.com/therealedatta/laravel-actions/pull/4
+- Bump aglipanci/laravel-pint-action from 1.0.0 to 2.1.0 by @dependabot in https://github.com/therealedatta/laravel-actions/pull/5
+
+**Full Changelog**: https://github.com/therealedatta/laravel-actions/compare/v1.1...v1.2
+
 ## v1.1 - 2022-12-04
 
 ### What's Changed

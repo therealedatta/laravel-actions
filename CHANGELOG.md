@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-actions` will be documented in this file.
 
+## v1.3 - 2023-03-20
+
+### What's Changed
+
+- Add support for Laravel 10
+- Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 by @dependabot in https://github.com/therealedatta/laravel-actions/pull/6
+- Bump aglipanci/laravel-pint-action from 2.1.0 to 2.2.0 by @dependabot in https://github.com/therealedatta/laravel-actions/pull/7
+
+**Full Changelog**: https://github.com/therealedatta/laravel-actions/compare/v1.2...v1.3
+
 ## v1.2 - 2023-01-12
 
 ### What's Changed

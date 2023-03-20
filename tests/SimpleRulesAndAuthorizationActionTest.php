@@ -32,7 +32,7 @@ it('fails validation', function () {
          ->assertStatus(422)
          ->assertJsonValidationErrors([
              'foo' => 'The foo field is required.',
-             'bar' => 'The bar field must be an integer.',
+             'bar', // => 'The bar field must be an integer.',  // translation differences between L9 and L10
          ]);
 });
 

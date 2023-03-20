@@ -30,7 +30,7 @@ it('can call actions as controller that call other action as objects', function 
          ->assertStatus(422)
          ->assertJsonValidationErrors([
              'foo' => 'The foo field is required.',
-             'bar' => 'The bar field must be an integer.',
+             'bar', // => 'The bar field must be an integer.',  // translation differences between L9 and L10
          ]);
 
     $this->postJson('/first-action?authorized2=1&authorized=1', ['foo' => 'this is the foo request arg'])

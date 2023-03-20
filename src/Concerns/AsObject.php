@@ -26,7 +26,8 @@ trait AsObject
         $class_action->prepareActionClass();
         $class_action->sendRequestThroughMiddleware($request);
 
-        return App::call([$class_action, 'handle'], $class_action->getAttributesFromRequest($request)); // @phpstan-ignore-line
+        // @phpstan-ignore-next-line
+        return App::call([$class_action, 'handle'], $class_action->getAttributesFromRequest($request));
     }
 
     public static function runIf(bool $boolean, array $attributes = []): mixed

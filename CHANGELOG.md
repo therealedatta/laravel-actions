@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-actions` will be documented in this file.
 
+## v1.3.1 - 2023-04-05
+
+### What's Changed
+
+- (feat): add support for middleware in method as in controllers
+
+**Full Changelog**: https://github.com/therealedatta/laravel-actions/compare/v1.3...v1.3.1
+
 ## v1.3 - 2023-03-20
 
 ### What's Changed

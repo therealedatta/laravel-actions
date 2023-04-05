@@ -4,7 +4,7 @@ namespace Therealedatta\LaravelActions\Tests\TestSupport;
 
 use Therealedatta\LaravelActions\Action;
 
-class MiddlewareAction extends Action
+class MiddlewarePropertyAction extends Action
 {
     protected array $middleware = [
         IsAuthorizedMiddleware::class,

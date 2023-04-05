@@ -12,6 +12,15 @@ abstract class Action extends FormRequest
 
     protected array $middleware = [];
 
+    public function __construct(array $query = [], array $request = [], array $attributes = [], array $cookies = [], array $files = [], array $server = [], $content = null)
+    {
+        parent::__construct($query, $request, $attributes, $cookies, $files, $server, $content);
+
+        if (method_exists($this, 'middleware')) {
+            $this->middleware = array_merge($this->middleware, $this->middleware());
+        }
+    }
+
     /**
      * Called before any routing method. We will use it to trigger
      * the steps to refresh the request and authorization
@@ -111,6 +120,8 @@ abstract class Action extends FormRequest
 
     /**
      * Used with `Actions::registerRoutes`
+     *
+     * @codeCoverageIgnore
      */
     public static function routes(Router $router): void
     {
